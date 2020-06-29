@@ -9,7 +9,9 @@ class MyGraphQlClient {
   MyGraphQlClient();
 
   GraphQLClient get client {
-    Link link = HttpLink(uri: AppConfig.instance.apiHost);
+    Link link = HttpLink(
+        uri:
+            'https://rickandmortyapi.com/graphql/' /*AppConfig.instance.apiHost*/);
 
     return GraphQLClient(
       cache: cache,
