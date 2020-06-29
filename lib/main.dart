@@ -1,7 +1,13 @@
+import 'package:colorize_lumberdash/colorize_lumberdash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lumberdash/lumberdash.dart';
+import 'package:rick_and_morty_app/controller/character_controller.dart';
+import 'package:rick_and_morty_app/di/inyector.dart';
 
 void main() {
+  putLumberdashToWork(withClients: [ColorizeLumberdash()]);
+  configureInyector();
   runApp(MyApp());
 }
 
@@ -36,6 +42,13 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(child: Text('Rick & Morty')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          CharacterController.to.fetchData();
+        },
+        tooltip: 'Fetch Data',
+        child: Icon(Icons.file_download),
+      ),
     );
   }
 }
