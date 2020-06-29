@@ -1,6 +1,10 @@
 # rick_and_morty_app
 
-A new Flutter project.
+A Flutter demo project about next topics: 
+
+- get package
+- graphql
+- freezed
 
 ## Getting Started
 
