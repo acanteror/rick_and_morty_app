@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
-import 'package:rick_and_morty_app/model/info_model.dart';
-import 'package:rick_and_morty_app/model/result_model.dart';
+import 'package:rick_and_morty_app/model/info/info_model.dart';
+import 'package:rick_and_morty_app/model/result/result_model.dart';
 
 part 'data_model.freezed.dart';
 part 'data_model.g.dart';
