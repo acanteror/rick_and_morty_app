@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:colorize_lumberdash/colorize_lumberdash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,23 +26,37 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(title),
       ),
-      body: Center(child: Text('Rick & Morty')),
+      body: GetBuilder<CharacterController>(
+          init: CharacterController(),
+          builder: (_) {
+            final _results = _.data?.results ?? [];
+            return ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: _results.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final _character = _results[index];
+                  return Card(
+                    elevation: 5,
+                    child: ListTile(
+                      leading: Image.network(_character.image),
+                      title: Text(_character.name.toUpperCase()),
+                      subtitle: Text('Status: ${_character.status}'),
+                      trailing: Icon(Icons.arrow_forward_ios),
+                    ),
+                  );
+                });
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           CharacterController.to.fetchData();
