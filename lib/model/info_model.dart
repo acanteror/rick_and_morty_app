@@ -9,17 +9,3 @@ abstract class Info with _$Info {
   const factory Info(int count, int pages, int next, int prev) = _Info;
   factory Info.fromJson(Map<String, dynamic> json) => _$InfoFromJson(json);
 }
-
-// class Info {
-//     int count;
-//     int pages;
-//     int next;
-//     int prev;
-
-//     Info({
-//         this.count,
-//         this.pages,
-//         this.next,
-//         this.prev,
-//     });
-// }
