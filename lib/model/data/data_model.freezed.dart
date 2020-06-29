@@ -11,10 +11,10 @@ Data _$DataFromJson(Map<String, dynamic> json) {
 }
 
 abstract class _$Data {
-  dynamic get info;
-  List<dynamic> get results;
+  Info get info;
+  List<Result> get results;
 
-  Data copyWith({dynamic info, List<dynamic> results});
+  Data copyWith({Info info, List<Result> results});
 
   Map<String, dynamic> toJson();
 }
@@ -27,9 +27,9 @@ class _$_Data implements _Data {
       _$_$_DataFromJson(json);
 
   @override
-  final dynamic info;
+  final Info info;
   @override
-  final List<dynamic> results;
+  final List<Result> results;
 
   @override
   String toString() {
@@ -52,8 +52,8 @@ class _$_Data implements _Data {
     Object results = immutable,
   }) {
     return _$_Data(
-      info == immutable ? this.info : info as dynamic,
-      results == immutable ? this.results : results as List<dynamic>,
+      info == immutable ? this.info : info as Info,
+      results == immutable ? this.results : results as List<Result>,
     );
   }
 
@@ -64,15 +64,15 @@ class _$_Data implements _Data {
 }
 
 abstract class _Data implements Data {
-  const factory _Data(dynamic info, List<dynamic> results) = _$_Data;
+  const factory _Data(Info info, List<Result> results) = _$_Data;
 
   factory _Data.fromJson(Map<String, dynamic> json) = _$_Data.fromJson;
 
   @override
-  dynamic get info;
+  Info get info;
   @override
-  List<dynamic> get results;
+  List<Result> get results;
 
   @override
-  _Data copyWith({dynamic info, List<dynamic> results});
+  _Data copyWith({Info info, List<Result> results});
 }

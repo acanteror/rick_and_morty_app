@@ -8,6 +8,7 @@ part 'data_model.g.dart';
 
 @immutable
 abstract class Data with _$Data {
+  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
   const factory Data(Info info, List<Result> results) = _Data;
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 }
