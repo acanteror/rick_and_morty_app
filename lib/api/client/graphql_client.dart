@@ -1,5 +1,4 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:rick_and_morty_app/config/app_config.dart';
 
 class MyGraphQlClient {
   final OptimisticCache cache = OptimisticCache(
@@ -9,9 +8,7 @@ class MyGraphQlClient {
   MyGraphQlClient();
 
   GraphQLClient get client {
-    Link link = HttpLink(
-        uri:
-            'https://rickandmortyapi.com/graphql/' /*AppConfig.instance.apiHost*/);
+    Link link = HttpLink(uri: 'https://rickandmortyapi.com/graphql/');
 
     return GraphQLClient(
       cache: cache,
