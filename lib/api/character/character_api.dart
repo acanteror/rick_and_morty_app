@@ -6,7 +6,7 @@ abstract class CharacterApi {
 }
 
 class CharacterApiImpl extends CharacterApi {
-  GraphQLClient graphQLClient;
+  final GraphQLClient graphQLClient;
 
   CharacterApiImpl({graphQLClient})
       : this.graphQLClient = graphQLClient ?? Get.find();
