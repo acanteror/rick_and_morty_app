@@ -1,16 +1,14 @@
 import 'package:get/get.dart';
-import 'package:rick_and_morty_app/exception/custom_exception.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/data_sources/character_api.dart';
+import 'package:rick_and_morty_app/features/characters/domain/repositories/characters_repository.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/data_sources/characters_data_source.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/models/data/data_model.dart';
 
-abstract class CharacterService {
-  Future<Data> fetchCharacters();
-}
+import '../../../../exception/custom_exception.dart';
 
-class CharacterServiceImpl extends CharacterService {
-  final CharacterApi api;
+class GraphQLCharacterRepository extends CharactersRepository {
+  final CharactersDataSource api;
 
-  CharacterServiceImpl({api}) : this.api = api ?? Get.find();
+  GraphQLCharacterRepository({api}) : this.api = api ?? Get.find();
 
   Future<Data> fetchCharacters() async {
     var _response = await api.fetchCharacters();

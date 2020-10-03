@@ -1,15 +1,14 @@
 import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-abstract class CharacterApi {
+abstract class CharactersDataSource {
   Future<dynamic> fetchCharacters();
 }
 
-class CharacterApiImpl extends CharacterApi {
+class GraphQLCharactersDataSource extends CharactersDataSource {
   final GraphQLClient graphQLClient;
 
-  CharacterApiImpl({graphQLClient})
-      : this.graphQLClient = graphQLClient ?? Get.find();
+  GraphQLCharactersDataSource({graphQLClient}) : this.graphQLClient = graphQLClient ?? Get.find();
 
   String charactersQuery() {
     return '''
