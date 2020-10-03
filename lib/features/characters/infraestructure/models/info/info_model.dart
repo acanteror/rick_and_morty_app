@@ -7,6 +7,12 @@ part 'info_model.g.dart';
 @immutable
 abstract class Info with _$Info {
   @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
-  const factory Info(int count, int pages, int next, int prev) = _Info;
+  const factory Info(
+    int count,
+    int pages,
+    int next,
+    int prev,
+  ) = _Info;
+
   factory Info.fromJson(Map<String, dynamic> json) => _$InfoFromJson(json);
 }
