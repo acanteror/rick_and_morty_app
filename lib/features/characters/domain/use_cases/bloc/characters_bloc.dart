@@ -30,6 +30,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
         final List<Result> _characters = _response.results;
         yield CharactersLoaded(characters: _characters);
       } catch (e) {
+        yield CharactersError();
         print(e.toString());
       }
     }
