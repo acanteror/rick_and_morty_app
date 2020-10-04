@@ -6,12 +6,12 @@ import 'package:rick_and_morty_app/features/characters/infraestructure/models/da
 import '../../../../exception/custom_exception.dart';
 
 class GraphQLCharacterRepository extends CharactersRepository {
-  final CharactersDataSource api;
+  final CharactersDataSource _dataSource;
 
-  GraphQLCharacterRepository({api}) : this.api = api ?? Get.find();
+  GraphQLCharacterRepository({CharactersDataSource dataSource}) : _dataSource = dataSource ?? Get.find();
 
   Future<Data> fetchCharacters() async {
-    var _response = await api.fetchCharacters();
+    var _response = await _dataSource.fetchCharacters();
 
     if (_response.exception != null) {
       throw ResponseException(_response.exception);
