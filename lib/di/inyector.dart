@@ -10,5 +10,5 @@ void configureInyector() {
   Get.lazyPut<GraphQLClient>(() => MyGraphQlClient().client);
   Get.lazyPut<CharactersDataSource>(() => GraphQLCharactersDataSource());
   Get.lazyPut<CharactersRepository>(() => GraphQLCharacterRepository());
-  Get.lazyPut<CharacterBloc>(() => CharacterBloc());
+  Get.lazyPut<CharactersBloc>(() => CharactersBloc());
 }

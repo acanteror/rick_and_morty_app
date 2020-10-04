@@ -14,8 +14,8 @@ class CharactersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: BlocBuilder<CharacterBloc, CharacterState>(
-        cubit: Get.find<CharacterBloc>(),
+      body: BlocBuilder<CharactersBloc, CharactersState>(
+        cubit: Get.find<CharactersBloc>(),
         builder: (context, state) {
           if (state is CharacterLoaded) {
             final List<Result> _results = state.characters;
@@ -36,7 +36,7 @@ class CharactersPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.find<CharacterBloc>().add(CharacterFetch());
+          Get.find<CharactersBloc>().add(CharacterFetch());
         },
         tooltip: 'Fetch Data',
         child: Icon(Icons.file_download),

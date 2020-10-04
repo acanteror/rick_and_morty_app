@@ -11,16 +11,16 @@ part 'character_event.dart';
 
 part 'character_state.dart';
 
-class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
+class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   final CharactersRepository _characterService;
 
-  CharacterBloc({characterService})
+  CharactersBloc({characterService})
       : _characterService = characterService ?? Get.find<CharactersRepository>(),
         super(CharacterInitial());
 
   @override
-  Stream<CharacterState> mapEventToState(
-    CharacterEvent event,
+  Stream<CharactersState> mapEventToState(
+    CharactersEvent event,
   ) async* {
     if (event is CharacterFetch) {
       yield CharacterLoading();
