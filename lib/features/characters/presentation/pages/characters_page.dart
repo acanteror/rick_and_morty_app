@@ -1,45 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:rick_and_morty_app/features/characters/domain/use_cases/bloc/characters_bloc.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/result.dart';
-import 'package:rick_and_morty_app/features/characters/presentation/widgets/character_list_item.dart';
+import 'package:rick_and_morty_app/features/characters/presentation/widgets/characters_list.dart';
+import 'package:rick_and_morty_app/features/characters/presentation/widgets/fetch_characters_fab.dart';
 
 class CharactersPage extends StatelessWidget {
-  CharactersPage({Key key, this.title}) : super(key: key);
+  CharactersPage({Key key, charactersBloc})
+      : charactersBloc = charactersBloc ?? Get.find<CharactersBloc>(),
+        super(key: key);
 
-  final String title;
+  final CharactersBloc charactersBloc;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: BlocBuilder<CharactersBloc, CharactersState>(
-        cubit: Get.find<CharactersBloc>(),
-        builder: (context, state) {
-          if (state is CharactersLoaded) {
-            final List<Result> _results = state.characters;
-            return ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: _results.length,
-              itemBuilder: (BuildContext context, int index) {
-                final Result _character = _results[index];
-                return CharacterListItem(character: _character);
-              },
-            );
-          }
-          if (state is CharactersLoading) {
-            return Center(child: CircularProgressIndicator());
-          }
-          return Center(child: Text('Pulse para cargar personajes.'));
-        },
+      appBar: AppBar(
+        key: Key('charactersPageAppBar'),
+        title: Text('Characters'),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.find<CharactersBloc>().add(CharactersFetch());
-        },
-        tooltip: 'Fetch Data',
-        child: Icon(Icons.file_download),
+      body: CharactersList(
+        key: Key('charactersPageBody'),
+        charactersBloc: charactersBloc,
+      ),
+      floatingActionButton: FetchCharactersFAB(
+        key: Key('charactersPageFAB'),
+        charactersBloc: charactersBloc,
       ),
     );
   }
