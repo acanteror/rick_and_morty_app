@@ -5,9 +5,9 @@ import 'package:mockito/mockito.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/data_sources/characters_data_source.dart';
 
-import '../../../helpers.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../../helpers.dart';
 import 'fake_data.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
