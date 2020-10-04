@@ -16,6 +16,7 @@ class CharacterListItem extends StatelessWidget {
     return Card(
       elevation: 5,
       child: ListTile(
+        key: Key('characterListTile'),
         leading: Image.network(_character.image),
         title: Text(_character.name.toUpperCase()),
         subtitle: Text('Status: ${_character.status}'),
