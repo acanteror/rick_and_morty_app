@@ -10,8 +10,6 @@ import '../../domain/use_cases/bloc/character_state_fake.dart';
 
 class MockCharactersBloc extends MockBloc<CharactersState> implements CharactersBloc {}
 
-//Widget makeTestableWidget() => MaterialApp(home: Image.network(''));
-
 void main() {
   CharactersBloc mockCharacterBloc;
 
