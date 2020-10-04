@@ -7,28 +7,28 @@ import 'package:rick_and_morty_app/features/characters/domain/repositories/chara
 import 'package:rick_and_morty_app/features/characters/infraestructure/models/data.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/models/result.dart';
 
-part 'character_event.dart';
+part 'characters_event.dart';
 
-part 'character_state.dart';
+part 'characters_state.dart';
 
 class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   final CharactersRepository _charactersRepository;
 
   CharactersBloc({charactersRepository})
       : _charactersRepository = charactersRepository ?? Get.find<CharactersRepository>(),
-        super(CharacterInitial());
+        super(CharactersInitial());
 
   @override
   Stream<CharactersState> mapEventToState(
     CharactersEvent event,
   ) async* {
     if (event is CharacterFetch) {
-      yield CharacterLoading();
+      yield CharactersLoading();
 
       try {
         final Data _response = await _charactersRepository.fetchCharacters();
         final List<Result> _characters = _response.results;
-        yield CharacterLoaded(characters: _characters);
+        yield CharactersLoaded(characters: _characters);
       } catch (e) {
         print(e.toString());
       }

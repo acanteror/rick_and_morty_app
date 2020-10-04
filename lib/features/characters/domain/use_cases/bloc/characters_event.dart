@@ -1,4 +1,4 @@
-part of 'character_bloc.dart';
+part of 'characters_bloc.dart';
 
 abstract class CharactersEvent extends Equatable {
   const CharactersEvent();

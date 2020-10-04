@@ -1,32 +1,32 @@
-part of 'character_bloc.dart';
+part of 'characters_bloc.dart';
 
 abstract class CharactersState extends Equatable {
   const CharactersState();
 }
 
-class CharacterInitial extends CharactersState {
+class CharactersInitial extends CharactersState {
   @override
   List<Object> get props => [];
 }
 
-class CharacterLoading extends CharactersState {
+class CharactersLoading extends CharactersState {
   @override
   List<Object> get props => [];
 }
 
-class CharacterError extends CharactersState {
+class CharactersError extends CharactersState {
   final String message;
 
-  CharacterError({this.message});
+  CharactersError({this.message});
 
   @override
   List<Object> get props => [message];
 }
 
-class CharacterLoaded extends CharactersState {
+class CharactersLoaded extends CharactersState {
   final List<Result> characters;
 
-  CharacterLoaded({this.characters});
+  CharactersLoaded({this.characters});
 
   @override
   List<Object> get props => [characters];

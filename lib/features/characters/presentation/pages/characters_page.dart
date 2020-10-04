@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:rick_and_morty_app/features/characters/domain/use_cases/bloc/character_bloc.dart';
+import 'package:rick_and_morty_app/features/characters/domain/use_cases/bloc/characters_bloc.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/models/result.dart';
 import 'package:rick_and_morty_app/features/characters/presentation/widgets/character_list_item.dart';
 
@@ -17,7 +17,7 @@ class CharactersPage extends StatelessWidget {
       body: BlocBuilder<CharactersBloc, CharactersState>(
         cubit: Get.find<CharactersBloc>(),
         builder: (context, state) {
-          if (state is CharacterLoaded) {
+          if (state is CharactersLoaded) {
             final List<Result> _results = state.characters;
             return ListView.builder(
               padding: const EdgeInsets.all(8),
@@ -28,7 +28,7 @@ class CharactersPage extends StatelessWidget {
               },
             );
           }
-          if (state is CharacterLoading) {
+          if (state is CharactersLoading) {
             return Center(child: CircularProgressIndicator());
           }
           return Center(child: Text('Pulse para cargar personajes.'));
