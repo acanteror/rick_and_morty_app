@@ -1,9 +1,9 @@
 {
-  "id": "1",
-  "name": "name1",
-  "status": "status1",
-  "species": "specie1",
-  "type": "type1",
-  "gender": "gender1",
-  "image": "https://test.com/1.jpeg"
+  "id": "id",
+  "name": "name",
+  "status": "status",
+  "species": "species",
+  "type": "type",
+  "gender": "gender",
+  "image": "image"
 }
