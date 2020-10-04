@@ -1,10 +1,9 @@
 # rick_and_morty_app
 
-A Flutter demo project about next topics: 
+A Flutter demo project about next topics:
 
 - [get](https://pub.dev/packages/get) package for dependency management
 - [graphql](https://pub.dev/packages/graphql_flutter) client
-- [freezed](https://pub.dev/packages/freezed) for data classes generation
 - state management with [flutter_bloc](https://pub.dev/packages/flutter_bloc)
 
 ## Getting Started
