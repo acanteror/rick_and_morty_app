@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
+import 'package:rick_and_morty_app/exception/custom_exception.dart';
 import 'package:rick_and_morty_app/features/characters/domain/repositories/characters_repository.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/data_sources/characters_data_source.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/data/data_model.dart';
-
-import '../../../../exception/custom_exception.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/models/data.dart';
 
 class GraphQLCharacterRepository extends CharactersRepository {
   final CharactersDataSource _dataSource;

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/result/result_model.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/models/result.dart';
 
 class CharacterListItem extends StatelessWidget {
   const CharacterListItem({

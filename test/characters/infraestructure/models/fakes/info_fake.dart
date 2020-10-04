@@ -1,3 +1,8 @@
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/info/info_model.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/models/info.dart';
 
-const Info tInfo = Info(100, 10, 2, null);
+final Info tInfo = Info(
+  count: 100,
+  pages: 10,
+  next: 2,
+  prev: null,
+);
