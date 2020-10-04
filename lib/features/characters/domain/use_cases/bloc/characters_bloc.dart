@@ -22,7 +22,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   Stream<CharactersState> mapEventToState(
     CharactersEvent event,
   ) async* {
-    if (event is CharacterFetch) {
+    if (event is CharactersFetch) {
       yield CharactersLoading();
 
       try {

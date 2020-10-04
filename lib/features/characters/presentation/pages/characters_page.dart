@@ -36,7 +36,7 @@ class CharactersPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.find<CharactersBloc>().add(CharacterFetch());
+          Get.find<CharactersBloc>().add(CharactersFetch());
         },
         tooltip: 'Fetch Data',
         child: Icon(Icons.file_download),
