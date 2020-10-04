@@ -12,10 +12,10 @@ part 'character_event.dart';
 part 'character_state.dart';
 
 class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
-  final CharactersRepository _characterService;
+  final CharactersRepository _characterRepository;
 
-  CharactersBloc({characterService})
-      : _characterService = characterService ?? Get.find<CharactersRepository>(),
+  CharactersBloc({characterRepository})
+      : _characterRepository = characterRepository ?? Get.find<CharactersRepository>(),
         super(CharacterInitial());
 
   @override
@@ -26,7 +26,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
       yield CharacterLoading();
 
       try {
-        final Data _response = await _characterService.fetchCharacters();
+        final Data _response = await _characterRepository.fetchCharacters();
         final List<Result> _characters = _response.results;
         yield CharacterLoaded(characters: _characters);
       } catch (e) {
