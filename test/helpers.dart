@@ -29,6 +29,6 @@ http.StreamedResponse simpleResponse({@required String body, int status}) {
 
 AuthLink getMyAuthLink() {
   return AuthLink(
-    getToken: () async => 'qVxkmShq-fsxme_-RKMD',
+    getToken: () async => 'token',
   );
 }
