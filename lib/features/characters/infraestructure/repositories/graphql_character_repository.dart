@@ -17,7 +17,7 @@ class GraphQLCharacterRepository extends CharactersRepository {
     }
 
     if (_response.data != null) {
-      return Data.fromJson(_response.data['characters']);
+      return Data.fromMap(_response.data['characters']);
     }
     throw ServerException('Se ha producido un error al contactar con el servidor');
   }
