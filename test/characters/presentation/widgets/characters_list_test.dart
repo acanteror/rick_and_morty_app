@@ -6,7 +6,7 @@ import 'package:rick_and_morty_app/features/characters/domain/use_cases/bloc/cha
 import 'package:rick_and_morty_app/features/characters/presentation/widgets/characters_list.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 
-import 'characters/domain/use_cases/bloc/character_state_fake.dart';
+import '../../domain/use_cases/bloc/character_state_fake.dart';
 
 class MockCharactersBloc extends MockBloc<CharactersState> implements CharactersBloc {}
 
@@ -67,13 +67,12 @@ void main() {
 
     when(mockCharacterBloc.state).thenReturn(tCharactersLoaded);
     await mockNetworkImagesFor(() async => await tester.pumpWidget(_charactersList));
-    //await tester.pumpWidget(_charactersList);
 
-    // final noCharactersFinder = find.byKey(Key('initialMessage'));
-    // final loadingFinder = find.byKey(Key('loading'));
-    // final characterListItem = find.byKey(Key('characterListItem'));
-    // expect(noCharactersFinder, findsNothing);
-    // expect(loadingFinder, findsNothing);
-    // expect(characterListItem, findsNWidgets(tCharactersLoaded.characters.length));
+    final noCharactersFinder = find.byKey(Key('initialMessage'));
+    final loadingFinder = find.byKey(Key('loading'));
+    final characterListItem = find.byKey(Key('characterListItem'));
+    expect(noCharactersFinder, findsNothing);
+    expect(loadingFinder, findsNothing);
+    expect(characterListItem, findsNWidgets(tCharactersLoaded.characters.length));
   });
 }
