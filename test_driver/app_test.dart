@@ -7,6 +7,9 @@ void main() {
     final charactersPageInitialMessage = find.byValueKey('initialMessageText');
     final charactersPageFAB = find.byValueKey('charactersPageFAB');
     final firstCharacterName = find.text('RICK SANCHEZ');
+    final firstCharacterTile = find.ancestor(of: firstCharacterName, matching: find.byValueKey('tappableListTile'));
+    final characterDetailPageBodyText = find.text('CHARACTER DETAIL');
+
     FlutterDriver driver;
 
     setUpAll(() async {
@@ -26,12 +29,21 @@ void main() {
       );
     });
 
-    test('after tapping fab load characters', () async {
+    test('after tapping item list navigete to detail page', () async {
       await driver.tap(charactersPageFAB);
 
       expect(
         await driver.getText(firstCharacterName),
         'RICK SANCHEZ',
+      );
+    });
+
+    test('after tapping fab load characters', () async {
+      await driver.tap(firstCharacterTile);
+
+      expect(
+        await driver.getText(characterDetailPageBodyText),
+        'CHARACTER DETAIL',
       );
     });
   });

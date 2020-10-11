@@ -18,6 +18,7 @@ class CharacterListItem extends StatelessWidget {
     return Card(
       elevation: 5,
       child: GestureDetector(
+        key: Key('tappableListTile'),
         child: ListTile(
           key: Key('characterListTile'),
           leading: Image.network(_character.image),
