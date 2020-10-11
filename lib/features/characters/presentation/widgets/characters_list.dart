@@ -34,12 +34,15 @@ class CharactersList extends StatelessWidget {
         if (state is CharactersLoading) {
           return Center(
             key: Key('loading'),
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(key: Key('loadingImage')),
           );
         }
         return Center(
           key: Key('initialMessage'),
-          child: Text('Pulse para cargar personajes.'),
+          child: Text('Pulse para cargar personajes.',
+              key: Key(
+                'initialMessageText',
+              )),
         );
       },
     );
