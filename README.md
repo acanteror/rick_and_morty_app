@@ -5,6 +5,8 @@ A Flutter demo project about next topics:
 - [get](https://pub.dev/packages/get) package for dependency management
 - [graphql](https://pub.dev/packages/graphql_flutter) client
 - state management with [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+- [testing](https://flutter.dev/docs/testing#integration-tests): unit and widget test with flutter_test, and functional test with flutter_drive
+
 
 ## Getting Started
 
