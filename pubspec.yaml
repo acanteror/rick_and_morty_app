@@ -27,6 +27,9 @@ dev_dependencies:
   bloc_test: ^7.0.4
   network_image_mock: ^1.0.0
   test_coverage: ^0.4.2
+  flutter_driver:
+    sdk: flutter
+  test: any
 
 # The following section is specific to Flutter.
 flutter:
