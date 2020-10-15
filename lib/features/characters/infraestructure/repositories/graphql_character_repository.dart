@@ -31,8 +31,8 @@ class GraphQLCharacterRepository extends CharactersRepository with ExceptionLogg
         ExceptionType.server,
         'Se ha producido un error al contactar con el servidor',
       );
-    } catch (e) {
-      throw exception(ExceptionType.graphql, e);
+    } catch (exception) {
+      throw exception(ExceptionType.graphql, exception);
     }
   }
 }
