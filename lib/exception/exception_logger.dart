@@ -8,7 +8,10 @@ enum ExceptionType {
 }
 
 class ExceptionLogger {
-  Exception exception(ExceptionType type, String errorMessage) {
+  Exception exception(
+    ExceptionType type,
+    String errorMessage,
+  ) {
     Exception _exception;
     switch (type) {
       case ExceptionType.graphql:
