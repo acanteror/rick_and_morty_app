@@ -14,7 +14,7 @@ class GraphQLCharactersDataSource extends CharactersDataSource {
     return '''
         query {
       characters(page: 1) {
-        info {
+        info{
           count
           pages
           next
@@ -37,7 +37,9 @@ class GraphQLCharactersDataSource extends CharactersDataSource {
   @override
   Future<QueryResult> fetchCharacters() async {
     var result = await graphQLClient.query(
-      QueryOptions(documentNode: gql(charactersQuery())),
+      QueryOptions(
+        documentNode: gql(charactersQuery()),
+      ),
     );
     return result;
   }
