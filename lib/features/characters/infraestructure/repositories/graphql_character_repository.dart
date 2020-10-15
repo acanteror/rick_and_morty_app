@@ -13,29 +13,22 @@ class GraphQLCharacterRepository extends CharactersRepository with ExceptionLogg
   }) : _dataSource = dataSource ?? Get.find();
 
   Future<Data> fetchCharacters() async {
-    try {
-      QueryResult _response = await _dataSource.fetchCharacters();
+    QueryResult _response = await _dataSource.fetchCharacters();
 
-      if (_response.exception != null) {
-        throw exception(
-          ExceptionType.response,
-          _response.exception.toString(),
-        );
-      }
-
-      if (_response.data != null) {
-        return Data.fromMap(_response.data['characters']);
-      }
-
+    if (_response.exception != null) {
       throw exception(
-        ExceptionType.server,
-        'Se ha producido un error al contactar con el servidor',
-      );
-    } catch (_exception) {
-      throw exception(
-        ExceptionType.graphql,
-        _exception.toString(),
+        ExceptionType.response,
+        _response.exception.toString(),
       );
     }
+
+    if (_response.data != null) {
+      return Data.fromMap(_response.data['characters']);
+    }
+
+    throw exception(
+      ExceptionType.server,
+      'Se ha producido un error al contactar con el servidor',
+    );
   }
 }
