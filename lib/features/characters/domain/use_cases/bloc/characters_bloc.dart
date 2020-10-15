@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
-import 'package:lumberdash/lumberdash.dart';
 import 'package:rick_and_morty_app/features/characters/domain/repositories/characters_repository.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/models/data.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/models/result.dart';
