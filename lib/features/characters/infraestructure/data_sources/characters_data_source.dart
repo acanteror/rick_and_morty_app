@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:rick_and_morty_app/exception/exception_logger.dart';
 
 abstract class CharactersDataSource {
   Future<QueryResult> fetchCharacters();
 }
 
-class GraphQLCharactersDataSource extends CharactersDataSource {
+class GraphQLCharactersDataSource extends CharactersDataSource with ExceptionLogger {
   final GraphQLClient graphQLClient;
 
   GraphQLCharactersDataSource({graphQLClient}) : this.graphQLClient = graphQLClient ?? Get.find();
@@ -36,11 +37,19 @@ class GraphQLCharactersDataSource extends CharactersDataSource {
 
   @override
   Future<QueryResult> fetchCharacters() async {
-    var result = await graphQLClient.query(
-      QueryOptions(
-        documentNode: gql(charactersQuery()),
-      ),
-    );
-    return result;
+    QueryResult _result;
+    try {
+      _result = await graphQLClient.query(
+        QueryOptions(
+          documentNode: gql(charactersQuery()),
+        ),
+      );
+      return _result;
+    } catch (_exception) {
+      throw exception(
+        ExceptionType.graphql,
+        _exception.toString(),
+      );
+    }
   }
 }
