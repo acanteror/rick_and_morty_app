@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
+import 'package:lumberdash/lumberdash.dart';
 import 'package:rick_and_morty_app/features/characters/domain/repositories/characters_repository.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/models/data.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/models/result.dart';
@@ -24,14 +25,12 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   ) async* {
     if (event is CharactersFetch) {
       yield CharactersLoading();
-
       try {
         final Data _response = await _charactersRepository.fetchCharacters();
         final List<Result> _characters = _response.results;
         yield CharactersLoaded(characters: _characters);
       } catch (e) {
         yield CharactersError();
-        print(e.toString());
       }
     }
   }
