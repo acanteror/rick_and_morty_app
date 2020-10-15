@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 abstract class CharactersDataSource {
-  Future<dynamic> fetchCharacters();
+  Future<QueryResult> fetchCharacters();
 }
 
 class GraphQLCharactersDataSource extends CharactersDataSource {
@@ -35,7 +35,7 @@ class GraphQLCharactersDataSource extends CharactersDataSource {
   }
 
   @override
-  Future fetchCharacters() async {
+  Future<QueryResult> fetchCharacters() async {
     var result = await graphQLClient.query(
       QueryOptions(documentNode: gql(charactersQuery())),
     );
