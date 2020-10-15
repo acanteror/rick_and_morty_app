@@ -2,8 +2,8 @@ import 'package:lumberdash/lumberdash.dart';
 import 'package:rick_and_morty_app/exception/custom_exception.dart';
 
 enum ExceptionType {
-  response,
   graphql,
+  response,
   server,
 }
 
