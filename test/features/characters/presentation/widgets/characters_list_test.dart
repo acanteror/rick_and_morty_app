@@ -17,7 +17,7 @@ void main() {
     mockCharacterBloc = MockCharactersBloc();
   });
 
-  testWidgets('CharactersList should show a message when charactersBloc emit CharactersInitial',
+  testWidgets('CharactersList should show a initial message when charactersBloc emit CharactersInitial',
       (WidgetTester tester) async {
     Widget _charactersList = Directionality(
       child: MediaQuery(
@@ -72,5 +72,22 @@ void main() {
     expect(noCharactersFinder, findsNothing);
     expect(loadingFinder, findsNothing);
     expect(characterListItem, findsNWidgets(tCharactersLoaded.characters.length));
+  });
+
+  testWidgets('CharactersList should show a error message when charactersBloc emit CharactersError',
+      (WidgetTester tester) async {
+    Widget _charactersList = Directionality(
+      child: MediaQuery(
+        data: MediaQueryData(),
+        child: CharactersList(charactersBloc: mockCharacterBloc),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+
+    when(mockCharacterBloc.state).thenReturn(tCharactersError);
+    await tester.pumpWidget(_charactersList);
+
+    final errorFinder = find.byKey(Key('errorMessage'));
+    expect(errorFinder, findsOneWidget);
   });
 }

@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:rick_and_morty_app/exception/custom_exception.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/data_sources/characters_data_source.dart';
 
 import 'package:http/http.dart' as http;
@@ -46,11 +47,18 @@ void main() {
         final expected = QueryResult(
           data: json.decode(charactersData),
         );
-        expect(
-          actual.data,
-          expected.data,
-        );
+        expect(actual.data, expected.data);
       },
     );
+
+    // test(
+    //   'fetchCharacters should throw graphql exception if graphql client call throw some exception',
+    //   () async {
+    //     when(mockHttpClient.send(any)).thenThrow((exception) async => GraphQLException(exception.toString()));
+    //     final _call = dataSource.fetchCharacters;
+    //     expect(_call(), throwsA(isA<GraphQLException>()));
+    //     verify(dataSource.fetchCharacters()).called(1);
+    //   },
+    // );
   });
 }

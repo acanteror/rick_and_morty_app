@@ -9,7 +9,9 @@ abstract class CharactersDataSource {
 class GraphQLCharactersDataSource extends CharactersDataSource with ExceptionLogger {
   final GraphQLClient graphQLClient;
 
-  GraphQLCharactersDataSource({graphQLClient}) : this.graphQLClient = graphQLClient ?? Get.find();
+  GraphQLCharactersDataSource({
+    graphQLClient,
+  }) : this.graphQLClient = graphQLClient ?? Get.find();
 
   String charactersQuery() {
     return '''
@@ -37,9 +39,8 @@ class GraphQLCharactersDataSource extends CharactersDataSource with ExceptionLog
 
   @override
   Future<QueryResult> fetchCharacters() async {
-    QueryResult _result;
     try {
-      _result = await graphQLClient.query(
+      QueryResult _result = await graphQLClient.query(
         QueryOptions(
           documentNode: gql(charactersQuery()),
         ),

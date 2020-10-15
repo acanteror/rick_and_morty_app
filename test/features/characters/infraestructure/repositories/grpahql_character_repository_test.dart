@@ -39,7 +39,10 @@ void main() {
     });
 
     test('should throw server exception when api doesn´t respond', () async {
-      when(charactersDataSource.fetchCharacters()).thenAnswer((_) async => QueryResult());
+      when(charactersDataSource.fetchCharacters()).thenAnswer((_) async => QueryResult(
+            data: null,
+            exception: null,
+          ));
       final _call = charactersRepository.fetchCharacters;
 
       expect(_call(), throwsA(predicate((e) => e is ServerException)));
