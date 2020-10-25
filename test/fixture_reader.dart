@@ -1,9 +1,9 @@
 import 'dart:io';
 
-String fixture(String feature, String name) {
+String fixture(String feature, String layer, String name) {
   try {
-    return File('../test/features/$feature/infraestructure/models/fixtures/$name').readAsStringSync();
+    return File('../test/features/$feature/$layer/fixtures/$name').readAsStringSync();
   } catch (e) {
-    return File('./test/features/$feature/infraestructure/models/fixtures/$name').readAsStringSync();
+    return File('./test/features/$feature/$layer/fixtures/$name').readAsStringSync();
   }
 }

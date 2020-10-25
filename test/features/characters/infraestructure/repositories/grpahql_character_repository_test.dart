@@ -7,7 +7,7 @@ import 'package:rick_and_morty_app/features/characters/infraestructure/data_sour
 import 'package:rick_and_morty_app/features/characters/infraestructure/dto/data.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/repositories/graphql_character_repository.dart';
 
-import '../models/fakes/data_fake.dart';
+import '../dto/fakes/data_fake.dart';
 import 'fake_responses.dart';
 
 class MockCharactersDataSource extends Mock implements CharactersDataSource {}

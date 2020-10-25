@@ -4,7 +4,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:rick_and_morty_app/features/characters/domain/repositories/characters_repository.dart';
 import 'package:rick_and_morty_app/features/characters/domain/use_cases/bloc/characters_bloc.dart';
 
-import '../../../infraestructure/models/fakes/data_fake.dart';
+import '../../../infraestructure/dto/fakes/data_fake.dart';
 import 'character_state_fake.dart';
 
 class MockCharactersBloc extends MockBloc<CharactersState> implements CharactersBloc {}

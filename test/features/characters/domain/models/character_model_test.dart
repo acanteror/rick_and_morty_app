@@ -1,26 +1,27 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/dto/info.dart';
+import 'package:rick_and_morty_app/features/characters/domain/models/character.dart';
 
-import 'fakes/info_fake.dart';
+import 'fakes/character_fake.dart';
 import '../../../../fixture_reader.dart';
 
 void main() {
   group('characters', () {
     test(
-      'Info fromJson should return a valid model',
+      'Result fromJson should return a valid model',
       () async {
         final Map<String, dynamic> _jsonMap = json.decode(
           fixture(
             'characters',
-            'info.json',
+            'domain/models',
+            'character.json',
           ),
         ) as Map<String, dynamic>;
 
-        final Info _result = Info.fromMap(_jsonMap);
+        final Character _result = Character.fromMap(_jsonMap);
 
-        expect(_result, tInfo);
+        expect(_result, tResult);
       },
     );
   });

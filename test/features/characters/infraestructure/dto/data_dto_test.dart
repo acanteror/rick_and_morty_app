@@ -14,6 +14,7 @@ void main() {
         final Map<String, dynamic> _jsonMap = json.decode(
           fixture(
             'characters',
+            'infraestructure/dto',
             'data.json',
           ),
         ) as Map<String, dynamic>;

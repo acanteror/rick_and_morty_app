@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'package:rick_and_morty_app/features/characters/presentation/widgets/character_list_item.dart';
-import '../../infraestructure/models/fakes/data_fake.dart';
+import '../../infraestructure/dto/fakes/data_fake.dart';
 
 void main() {
   testWidgets('CharactersListItem should ...', (WidgetTester tester) async {
