@@ -21,7 +21,7 @@ void main() {
 
         final Character _result = Character.fromMap(_jsonMap);
 
-        expect(_result, tResult);
+        expect(_result, tCharacter);
       },
     );
   });
