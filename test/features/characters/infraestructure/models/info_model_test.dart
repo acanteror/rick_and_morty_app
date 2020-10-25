@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/info.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/dto/info.dart';
 
 import 'fakes/info_fake.dart';
 import '../../../../fixture_reader.dart';

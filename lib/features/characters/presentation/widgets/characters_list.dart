@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty_app/features/characters/domain/use_cases/bloc/characters_bloc.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/character.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/dto/character.dart';
 import 'package:rick_and_morty_app/features/characters/presentation/widgets/character_list_item.dart';
 
 class CharactersList extends StatelessWidget {

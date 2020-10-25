@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:rick_and_morty_app/exception/custom_exception.dart';
 import 'package:rick_and_morty_app/features/characters/domain/repositories/characters_repository.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/data_sources/characters_data_source.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/data.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/dto/data.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/repositories/graphql_character_repository.dart';
 
 import '../models/fakes/data_fake.dart';

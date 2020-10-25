@@ -1,4 +1,4 @@
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/info.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/dto/info.dart';
 
 final Info tInfo = Info(
   count: 100,

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/info.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/character.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/dto/info.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/dto/character.dart';
 
 class Data {
   final Info info;

@@ -3,7 +3,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:rick_and_morty_app/exception/exception_logger.dart';
 import 'package:rick_and_morty_app/features/characters/domain/repositories/characters_repository.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/data_sources/characters_data_source.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/data.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/dto/data.dart';
 
 class GraphQLCharacterRepository extends CharactersRepository with ExceptionLogger {
   final CharactersDataSource _dataSource;
