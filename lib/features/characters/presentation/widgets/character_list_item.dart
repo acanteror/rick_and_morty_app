@@ -2,16 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rick_and_morty_app/features/character_detail/presentation/pages/character_detail_page.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/result.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/models/character.dart';
 
 class CharacterListItem extends StatelessWidget {
   const CharacterListItem({
     Key key,
-    @required Result character,
+    @required Character character,
   })  : _character = character,
         super(key: key);
 
-  final Result _character;
+  final Character _character;
 
   @override
   Widget build(BuildContext context) {

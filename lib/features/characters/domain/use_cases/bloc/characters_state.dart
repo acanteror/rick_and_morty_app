@@ -24,7 +24,7 @@ class CharactersError extends CharactersState {
 }
 
 class CharactersLoaded extends CharactersState {
-  final List<Result> characters;
+  final List<Character> characters;
 
   CharactersLoaded({this.characters});
 

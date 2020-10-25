@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
 import 'package:rick_and_morty_app/features/characters/domain/repositories/characters_repository.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/models/data.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/result.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/models/character.dart';
 
 part 'characters_event.dart';
 
@@ -26,7 +26,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
       yield CharactersLoading();
       try {
         final Data _response = await _charactersRepository.fetchCharacters();
-        final List<Result> _characters = _response.results;
+        final List<Character> _characters = _response.results;
         yield CharactersLoaded(characters: _characters);
       } catch (e) {
         yield CharactersError();

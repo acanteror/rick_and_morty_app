@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/models/info.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/result.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/models/character.dart';
 
 class Data {
   final Info info;
-  final List<Result> results;
+  final List<Character> results;
   Data({
     this.info,
     this.results,
@@ -14,7 +14,7 @@ class Data {
 
   Data copyWith({
     Info info,
-    List<Result> results,
+    List<Character> results,
   }) {
     return Data(
       info: info ?? this.info,
@@ -34,7 +34,7 @@ class Data {
 
     return Data(
       info: Info.fromMap(map['info']),
-      results: List<Result>.from(map['results']?.map((x) => Result.fromMap(x))),
+      results: List<Character>.from(map['results']?.map((x) => Character.fromMap(x))),
     );
   }
 

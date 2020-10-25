@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class Result {
+class Character {
   final String id;
   final String name;
   final String status;
@@ -8,7 +8,7 @@ class Result {
   final String type;
   final String gender;
   final String image;
-  Result({
+  Character({
     this.id,
     this.name,
     this.status,
@@ -18,7 +18,7 @@ class Result {
     this.image,
   });
 
-  Result copyWith({
+  Character copyWith({
     String id,
     String name,
     String status,
@@ -27,7 +27,7 @@ class Result {
     String gender,
     String image,
   }) {
-    return Result(
+    return Character(
       id: id ?? this.id,
       name: name ?? this.name,
       status: status ?? this.status,
@@ -50,10 +50,10 @@ class Result {
     };
   }
 
-  factory Result.fromMap(Map<String, dynamic> map) {
+  factory Character.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
-    return Result(
+    return Character(
       id: map['id'],
       name: map['name'],
       status: map['status'],
@@ -66,7 +66,7 @@ class Result {
 
   String toJson() => json.encode(toMap());
 
-  factory Result.fromJson(String source) => Result.fromMap(json.decode(source));
+  factory Character.fromJson(String source) => Character.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -77,7 +77,7 @@ class Result {
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
-    return o is Result &&
+    return o is Character &&
         o.id == id &&
         o.name == name &&
         o.status == status &&

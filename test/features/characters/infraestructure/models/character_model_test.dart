@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/models/result.dart';
+import 'package:rick_and_morty_app/features/characters/infraestructure/models/character.dart';
 
-import 'fakes/result_fake.dart';
+import 'fakes/character_fake.dart';
 import '../../../../fixture_reader.dart';
 
 void main() {
@@ -14,11 +14,11 @@ void main() {
         final Map<String, dynamic> _jsonMap = json.decode(
           fixture(
             'characters',
-            'result.json',
+            'character.json',
           ),
         ) as Map<String, dynamic>;
 
-        final Result _result = Result.fromMap(_jsonMap);
+        final Character _result = Character.fromMap(_jsonMap);
 
         expect(_result, tResult);
       },
