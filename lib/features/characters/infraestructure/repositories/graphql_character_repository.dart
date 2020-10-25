@@ -5,10 +5,10 @@ import 'package:rick_and_morty_app/features/characters/domain/repositories/chara
 import 'package:rick_and_morty_app/features/characters/infraestructure/data_sources/characters_data_source.dart';
 import 'package:rick_and_morty_app/features/characters/infraestructure/dto/data.dart';
 
-class GraphQLCharacterRepository extends CharactersRepository with ExceptionLogger {
+class GraphQLCharactersRepository extends CharactersRepository with ExceptionLogger {
   final CharactersDataSource _dataSource;
 
-  GraphQLCharacterRepository({
+  GraphQLCharactersRepository({
     CharactersDataSource dataSource,
   }) : _dataSource = dataSource ?? Get.find();
 
