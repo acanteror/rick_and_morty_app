@@ -18,7 +18,7 @@ void main() {
 
   setUp(() {
     charactersDataSource = MockCharactersDataSource();
-    charactersRepository = GraphQLCharacterRepository(dataSource: charactersDataSource);
+    charactersRepository = GraphQLCharactersRepository(dataSource: charactersDataSource);
   });
 
   group('characters', () {
