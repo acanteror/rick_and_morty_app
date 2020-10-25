@@ -1,0 +1,17 @@
+{
+    "id": "id",
+    "name": "name",
+    "status": "status",
+    "species": "species",
+    "type": "type",
+    "gender": "gender",
+    "image": "image",
+    "episode": [
+      {
+        "id": "id",
+        "name": "name",
+        "air_date": "air_date",
+        "episode": "episode"
+      }
+    ]
+}
