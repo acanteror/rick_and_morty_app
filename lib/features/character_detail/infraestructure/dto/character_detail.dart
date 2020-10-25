@@ -55,7 +55,7 @@ class CharacterDetail {
       'type': type,
       'gender': gender,
       'image': image,
-      'episodes': episodes?.map((x) => x?.toMap())?.toList(),
+      'episode': episodes?.map((x) => x?.toMap())?.toList(),
     };
   }
 
@@ -70,7 +70,8 @@ class CharacterDetail {
       type: map['type'],
       gender: map['gender'],
       image: map['image'],
-      episodes: List<Episode>.from(map['episodes']?.map((x) => Episode.fromMap(x))),
+      episodes:
+          (map['episode'] as List)?.map((x) => x == null ? null : Episode.fromMap(x as Map<String, dynamic>))?.toList(),
     );
   }
 
@@ -80,7 +81,7 @@ class CharacterDetail {
 
   @override
   String toString() {
-    return 'CharacterDetail(id: $id, name: $name, status: $status, species: $species, type: $type, gender: $gender, image: $image, episodes: $episodes)';
+    return 'CharacterDetail(id: $id, name: $name, status: $status, species: $species, type: $type, gender: $gender, image: $image, episode: $episodes)';
   }
 
   @override
