@@ -35,11 +35,11 @@ void main() {
 
   group('characters', () {
     test(
-      'fetchCharacters should return a valid result list...',
+      'fetchCharacters should return a valid charactersData...',
       () async {
         when(mockHttpClient.send(any)).thenAnswer(
           (_) async => simpleResponse(
-            body: responseData,
+            body: charactersResponse,
           ),
         );
         final actual = await dataSource.fetchCharacters();

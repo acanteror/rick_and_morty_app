@@ -1,4 +1,4 @@
-const String responseData = r'''
+const String charactersResponse = r'''
   {
   "data": {
     "characters": {
