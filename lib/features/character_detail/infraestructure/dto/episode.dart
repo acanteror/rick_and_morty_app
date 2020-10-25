@@ -30,7 +30,7 @@ class Episode {
     return {
       'id': id,
       'name': name,
-      'airDate': airDate,
+      'air_date': airDate,
       'episode': episode,
     };
   }
@@ -41,7 +41,7 @@ class Episode {
     return Episode(
       id: map['id'],
       name: map['name'],
-      airDate: map['airDate'],
+      airDate: map['air_date'],
       episode: map['episode'],
     );
   }
@@ -52,7 +52,7 @@ class Episode {
 
   @override
   String toString() {
-    return 'Episode(id: $id, name: $name, airDate: $airDate, episode: $episode)';
+    return 'Episode(id: $id, name: $name, air_date: $airDate, episode: $episode)';
   }
 
   @override
