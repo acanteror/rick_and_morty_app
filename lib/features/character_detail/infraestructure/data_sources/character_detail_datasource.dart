@@ -13,9 +13,9 @@ class GraphQLCharacterDetailDataSource extends CharacterDetailDataSource with Ex
     graphQLClient,
   }) : this.graphQLClient = graphQLClient ?? Get.find();
 
-  String characterQuery(String id) {
+  String characterQuery() {
     return r'''
-        query characterDetail($id: id!) {
+        query characterDetail($id: ID!) {
       character(id: $id) {
         id
     		name
@@ -43,7 +43,7 @@ class GraphQLCharacterDetailDataSource extends CharacterDetailDataSource with Ex
       };
       QueryResult _result = await graphQLClient.query(
         QueryOptions(
-          documentNode: gql(characterQuery(id)),
+          documentNode: gql(characterQuery()),
           variables: _variables,
         ),
       );
