@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rick_and_morty_app/features/characters/domain/use_cases/bloc/characters_bloc.dart';
+import 'package:rick_and_morty_app/features/characters/domain/bloc/characters_bloc.dart';
 import 'package:rick_and_morty_app/features/characters/presentation/widgets/characters_list.dart';
 import 'package:rick_and_morty_app/features/characters/presentation/widgets/fetch_characters_fab.dart';
 

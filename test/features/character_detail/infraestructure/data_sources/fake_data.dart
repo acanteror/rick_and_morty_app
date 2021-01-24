@@ -2,7 +2,6 @@ const String characterDetailResponse = r'''
   {
   "data": {
     "character": {
-      {
         "id": "id",
         "name": "name",
         "status": "status",
@@ -21,7 +20,6 @@ const String characterDetailResponse = r'''
       }
     }
   }
-}
   ''';
 
 const String characterDetailData = r'''

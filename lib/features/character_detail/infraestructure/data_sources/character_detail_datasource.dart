@@ -35,6 +35,24 @@ class GraphQLCharacterDetailDataSource extends CharacterDetailDataSource with Ex
     ''';
   }
 
+  /*r'''
+      query login ($email: String!, $password: String!, $account_id: Int) {
+        login(email: $email, password: $password, account_id: $account_id) {
+          id
+          first_name
+          last_name
+          email
+          role
+          about_me
+          avatar_url
+          avatar_xl_url
+          created_at
+          updated_at
+          authentication_token
+        }
+      }
+    '''*/
+
   @override
   Future<QueryResult> fetchCharacterDetail(String id) async {
     try {
@@ -47,6 +65,7 @@ class GraphQLCharacterDetailDataSource extends CharacterDetailDataSource with Ex
           variables: _variables,
         ),
       );
+      print(_result.exception);
       return _result;
     } catch (_exception) {
       throw exception(

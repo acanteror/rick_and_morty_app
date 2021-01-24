@@ -2,11 +2,11 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:rick_and_morty_app/features/characters/domain/use_cases/bloc/characters_bloc.dart';
-import 'package:rick_and_morty_app/features/characters/presentation/widgets/characters_list.dart';
 import 'package:network_image_mock/network_image_mock.dart';
+import 'package:rick_and_morty_app/features/characters/domain/bloc/characters_bloc.dart';
+import 'package:rick_and_morty_app/features/characters/presentation/widgets/characters_list.dart';
 
-import '../../domain/use_cases/bloc/character_state_fake.dart';
+import '../../domain/bloc/character_state_fake.dart';
 
 class MockCharactersBloc extends MockBloc<CharactersState> implements CharactersBloc {}
 

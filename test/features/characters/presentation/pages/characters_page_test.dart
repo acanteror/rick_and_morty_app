@@ -1,7 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rick_and_morty_app/features/characters/domain/use_cases/bloc/characters_bloc.dart';
+import 'package:rick_and_morty_app/features/characters/domain/bloc/characters_bloc.dart';
 import 'package:rick_and_morty_app/features/characters/presentation/pages/characters_page.dart';
 
 class MockCharactersBloc extends MockBloc<CharactersState> implements CharactersBloc {}
