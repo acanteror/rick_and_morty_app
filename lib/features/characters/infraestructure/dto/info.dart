@@ -5,6 +5,7 @@ class Info {
   final int pages;
   final int next;
   final int prev;
+
   Info({
     this.count,
     this.pages,
