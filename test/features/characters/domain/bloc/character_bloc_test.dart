@@ -4,10 +4,11 @@ import 'package:mockito/mockito.dart';
 import 'package:rick_and_morty_app/features/characters/domain/bloc/characters_bloc.dart';
 import 'package:rick_and_morty_app/features/characters/domain/repositories/characters_repository.dart';
 
-import '../../infraestructure/dto/fakes/data_fake.dart';
+import '../../infrastructure/dto/fakes/data_fake.dart';
 import 'character_state_fake.dart';
 
-class MockCharactersBloc extends MockBloc<CharactersState> implements CharactersBloc {}
+class MockCharactersBloc extends MockBloc<CharactersState>
+    implements CharactersBloc {}
 
 class MockCharactersRepository extends Mock implements CharactersRepository {}
 
@@ -64,7 +65,8 @@ void main() {
     blocTest<CharactersBloc, CharactersState>(
       'emits [tCharactersLoading, tCharactersSuccess] when CharactersFetch event is added and charactersRepository returns correct Data',
       build: () {
-        when(charactersRepository.fetchCharacters()).thenAnswer((_) async => tData);
+        when(charactersRepository.fetchCharacters())
+            .thenAnswer((_) async => tData);
         return charactersBloc;
       },
       act: (bloc) async => bloc.add(CharactersFetch()),

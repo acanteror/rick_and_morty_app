@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
 import 'package:rick_and_morty_app/features/characters/domain/models/character.dart';
 import 'package:rick_and_morty_app/features/characters/domain/repositories/characters_repository.dart';
-import 'package:rick_and_morty_app/features/characters/infraestructure/dto/data.dart';
+import 'package:rick_and_morty_app/features/characters/infrastructure/dto/data.dart';
 
 part 'characters_event.dart';
 part 'characters_state.dart';
@@ -14,7 +14,8 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   final CharactersRepository _charactersRepository;
 
   CharactersBloc({charactersRepository})
-      : _charactersRepository = charactersRepository ?? Get.find<CharactersRepository>(),
+      : _charactersRepository =
+            charactersRepository ?? Get.find<CharactersRepository>(),
         super(CharactersInitial());
 
   @override

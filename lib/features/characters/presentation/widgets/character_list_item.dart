@@ -25,13 +25,25 @@ class CharacterListItem extends StatelessWidget {
           leading: Image.network(_character.image),
           title: Text(_character.name.toUpperCase()),
           subtitle: Text('Status: ${_character.status}'),
-          trailing: Icon(Icons.arrow_forward_ios),
+          trailing: FavouriteIconButton(),
           onTap: () async {
-            await Get.find<CharacterBloc>().add(CharacterFetch(id: _character.id));
+            await Get.find<CharacterBloc>()
+                .add(CharacterFetch(id: _character.id));
             Get.to(CharacterDetailPage());
           },
         ),
       ),
     );
+  }
+}
+
+class FavouriteIconButton extends StatelessWidget {
+  const FavouriteIconButton({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(Icons.arrow_forward_ios);
   }
 }

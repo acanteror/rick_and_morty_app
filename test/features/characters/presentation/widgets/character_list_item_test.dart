@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'package:rick_and_morty_app/features/characters/presentation/widgets/character_list_item.dart';
-import '../../infraestructure/dto/fakes/data_fake.dart';
+
+import '../../infrastructure/dto/fakes/data_fake.dart';
 
 void main() {
   testWidgets('CharactersListItem should ...', (WidgetTester tester) async {
@@ -14,7 +15,8 @@ void main() {
       ),
       textDirection: TextDirection.ltr,
     );
-    await mockNetworkImagesFor(() async => await tester.pumpWidget(_charactersListItem));
+    await mockNetworkImagesFor(
+        () async => await tester.pumpWidget(_charactersListItem));
 
     final tileFinder = find.byKey(Key('characterListTile'));
     expect(tileFinder, findsOneWidget);

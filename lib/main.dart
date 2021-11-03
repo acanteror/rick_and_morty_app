@@ -10,7 +10,7 @@ import 'package:rick_and_morty_app/features/characters/presentation/pages/charac
 void main() {
   Bloc.observer = MyBlocObserver();
   putLumberdashToWork(withClients: [ColorizeLumberdash()]);
-  configureInyector();
+  configureInjector();
   runApp(MyApp());
 }
 
