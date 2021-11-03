@@ -1,11 +1,8 @@
 import 'package:get/get.dart';
-import 'package:rick_and_morty_app/exception/exception_logger.dart';
 import 'package:rick_and_morty_app/features/favourites/domain/repositories/favourites_repository.dart';
 import 'package:rick_and_morty_app/features/favourites/infrastructure/data_sources/favourites_preferences.dart';
 
-class SharedPreferencesFavouritesRepository
-    with ExceptionLogger
-    implements FavouritesRepository {
+class SharedPreferencesFavouritesRepository implements FavouritesRepository {
   final FavouritesPreferences _dataSource;
 
   SharedPreferencesFavouritesRepository({
@@ -13,28 +10,28 @@ class SharedPreferencesFavouritesRepository
   }) : _dataSource = dataSource ?? Get.find();
 
   @override
-  Future<List<String>> fetchFavourites() async {
-    List<String> _favourites = await _dataSource.favourites;
+  List<String> fetchFavourites() {
+    List<String> _favourites = _dataSource.getFavourites() ?? <String>[];
 
-    if (_favourites != null) {
-      return _favourites;
+    return _favourites;
+  }
+
+  @override
+  List<String> toggleFavourite(String id) {
+    List<String> _favourites = _dataSource.getFavourites();
+
+    if (_favourites == null || !_favourites.contains(id)) {
+      _favourites.add(id);
     }
 
-    throw exception(
-      ExceptionType.server,
-      'Server error',
-    );
+    if (_favourites != null && _favourites.contains(id)) {
+      _favourites.remove(id);
+    }
+    return updatedFavourites(_favourites);
   }
 
-  @override
-  Future<void> insertFavourite(String id) {
-    // TODO: implement insertFavourite
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> removeFavourite(String id) {
-    // TODO: implement removeFavourite
-    throw UnimplementedError();
+  List<String> updatedFavourites(List<String> favourites) {
+    _dataSource.setFavourites(favourites);
+    return favourites;
   }
 }

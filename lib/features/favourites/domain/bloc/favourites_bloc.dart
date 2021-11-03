@@ -20,13 +20,23 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
   Stream<FavouritesState> mapEventToState(
     FavouritesEvent event,
   ) async* {
+    if (event is FavouritesFetch) {
+      try {
+        final List<String> _favourites =
+            await _favouritesRepository.fetchFavourites();
+        yield FavouritesSuccess(favourites: _favourites);
+      } catch (e) {
+        yield FavouritesError();
+      }
+    }
+
     if (event is FavouritesToggle) {
       try {
-        //final CharacterDetailViewModel _response =
-        //    await _favouritesRepository.(event.id);
-        //yield CharacterLoaded(characterDetail: _response);
+        final List<String> _favourites =
+            await _favouritesRepository.toggleFavourite(event.id);
+        yield FavouritesSuccess(favourites: _favourites);
       } catch (e) {
-        //yield CharacterError(message: e.toString());
+        yield FavouritesError();
       }
     }
   }

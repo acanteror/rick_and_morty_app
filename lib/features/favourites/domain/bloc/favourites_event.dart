@@ -7,6 +7,13 @@ abstract class FavouritesEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class FavouritesFetch extends FavouritesEvent {
+  const FavouritesFetch();
+
+  @override
+  List<Object> get props => [];
+}
+
 class FavouritesToggle extends FavouritesEvent {
   final String id;
 

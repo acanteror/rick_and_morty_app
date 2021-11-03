@@ -1,6 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FavouritesPreferences {
+  static const String favouritesKey = 'favourites';
+
   static final FavouritesPreferences _getInstance =
       FavouritesPreferences._internal();
 
@@ -16,12 +18,13 @@ class FavouritesPreferences {
     _prefs = await SharedPreferences.getInstance();
   }
 
-  List<String> get favourites {
-    return _prefs.getStringList('favourites');
+  List<String> getFavourites() {
+    return _prefs.getStringList(favouritesKey);
   }
 
-  set favourites(List<String> value) {
-    _prefs.setStringList('favourites', value);
+  List<String> setFavourites(List<String> value) {
+    _prefs.setStringList(favouritesKey, value);
+    return _prefs.getStringList(favouritesKey);
   }
 
   void clear() {

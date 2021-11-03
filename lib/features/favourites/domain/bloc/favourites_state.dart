@@ -14,10 +14,17 @@ class FavouritesInitial extends FavouritesState {
 }
 
 class FavouritesSuccess extends FavouritesState {
-  final List<bool> favourites;
+  final List<String> favourites;
 
   FavouritesSuccess({this.favourites});
 
   @override
   List<Object> get props => [favourites];
+}
+
+class FavouritesError extends FavouritesState {
+  FavouritesError();
+
+  @override
+  List<Object> get props => [];
 }

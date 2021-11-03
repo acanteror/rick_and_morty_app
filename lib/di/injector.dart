@@ -9,11 +9,15 @@ import 'package:rick_and_morty_app/features/characters/domain/bloc/characters_bl
 import 'package:rick_and_morty_app/features/characters/domain/repositories/characters_repository.dart';
 import 'package:rick_and_morty_app/features/characters/infrastructure/data_sources/characters_data_source.dart';
 import 'package:rick_and_morty_app/features/characters/infrastructure/repositories/graphql_character_repository.dart';
+import 'package:rick_and_morty_app/features/favourites/domain/repositories/favourites_repository.dart';
 import 'package:rick_and_morty_app/features/favourites/infrastructure/data_sources/favourites_preferences.dart';
+import 'package:rick_and_morty_app/features/favourites/infrastructure/repositories/shared_preferences_favourites_respository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void configureInjector() async {
+  Get.putAsync<SharedPreferences>(() => FavouritesPreferences().initPrefs());
   Get.lazyPut<FavouritesPreferences>(
-    () => FavouritesPreferences()..initPrefs(),
+    () => FavouritesPreferences(),
     fenix: true,
   );
   Get.lazyPut<GraphQLClient>(() => MyGraphQlClient().client);
@@ -30,4 +34,8 @@ void configureInjector() async {
       () => GraphQLCharacterDetailRepository(),
       fenix: true);
   Get.lazyPut<CharacterBloc>(() => CharacterBloc(), fenix: true);
+
+  Get.lazyPut<FavouritesRepository>(
+      () => SharedPreferencesFavouritesRepository(),
+      fenix: true);
 }
