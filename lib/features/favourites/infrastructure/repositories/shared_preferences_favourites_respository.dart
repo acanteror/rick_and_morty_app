@@ -11,6 +11,7 @@ class SharedPreferencesFavouritesRepository implements FavouritesRepository {
 
   @override
   List<String> fetchFavourites() {
+    _dataSource.initPrefs();
     List<String> _favourites = _dataSource.getFavourites() ?? <String>[];
 
     return _favourites;
@@ -18,15 +19,14 @@ class SharedPreferencesFavouritesRepository implements FavouritesRepository {
 
   @override
   List<String> toggleFavourite(String id) {
-    List<String> _favourites = _dataSource.getFavourites();
+    List<String> _favourites = _dataSource.getFavourites() ?? <String>[];
 
-    if (_favourites == null || !_favourites.contains(id)) {
+    if (!_favourites.contains(id)) {
       _favourites.add(id);
-    }
-
-    if (_favourites != null && _favourites.contains(id)) {
+    } else {
       _favourites.remove(id);
     }
+
     return updatedFavourites(_favourites);
   }
 

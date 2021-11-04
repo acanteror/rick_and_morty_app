@@ -5,7 +5,7 @@ abstract class FavouritesState extends Equatable {
 }
 
 class FavouritesInitial extends FavouritesState {
-  final List<bool> favourites;
+  final List<String> favourites;
 
   FavouritesInitial({this.favourites});
 

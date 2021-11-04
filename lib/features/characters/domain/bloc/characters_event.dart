@@ -8,3 +8,5 @@ abstract class CharactersEvent extends Equatable {
 }
 
 class CharactersFetch extends CharactersEvent {}
+
+class CharactersFilter extends CharactersEvent {}

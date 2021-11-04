@@ -8,6 +8,7 @@ class Character {
   final String type;
   final String gender;
   final String image;
+  final bool isFavourite;
   Character({
     this.id,
     this.name,
@@ -16,6 +17,7 @@ class Character {
     this.type,
     this.gender,
     this.image,
+    this.isFavourite,
   });
 
   Character copyWith({
@@ -26,6 +28,7 @@ class Character {
     String type,
     String gender,
     String image,
+    bool isFavourite,
   }) {
     return Character(
       id: id ?? this.id,
@@ -35,6 +38,7 @@ class Character {
       type: type ?? this.type,
       gender: gender ?? this.gender,
       image: image ?? this.image,
+      isFavourite: isFavourite ?? this.isFavourite,
     );
   }
 
@@ -47,6 +51,7 @@ class Character {
       'type': type,
       'gender': gender,
       'image': image,
+      'isFavourite': isFavourite,
     };
   }
 
@@ -61,16 +66,18 @@ class Character {
       type: map['type'],
       gender: map['gender'],
       image: map['image'],
+      isFavourite: map['isFavourite'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Character.fromJson(String source) => Character.fromMap(json.decode(source));
+  factory Character.fromJson(String source) =>
+      Character.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'Result(id: $id, name: $name, status: $status, species: $species, type: $type, gender: $gender, image: $image)';
+    return 'Result(id: $id, name: $name, status: $status, species: $species, type: $type, gender: $gender, image: $image, isFavourite: $isFavourite)';
   }
 
   @override
@@ -84,7 +91,8 @@ class Character {
         o.species == species &&
         o.type == type &&
         o.gender == gender &&
-        o.image == image;
+        o.image == image &&
+        o.isFavourite == isFavourite;
   }
 
   @override
@@ -95,6 +103,7 @@ class Character {
         species.hashCode ^
         type.hashCode ^
         gender.hashCode ^
-        image.hashCode;
+        image.hashCode ^
+        isFavourite.hashCode;
   }
 }

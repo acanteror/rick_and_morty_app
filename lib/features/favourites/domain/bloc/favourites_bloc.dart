@@ -11,9 +11,9 @@ part 'favourites_state.dart';
 class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
   final FavouritesRepository _favouritesRepository;
 
-  FavouritesBloc({characterRepository})
+  FavouritesBloc({favouritesRepository})
       : _favouritesRepository =
-            characterRepository ?? Get.find<FavouritesRepository>(),
+            favouritesRepository ?? Get.find<FavouritesRepository>(),
         super(FavouritesInitial());
 
   @override
