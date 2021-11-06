@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:rick_and_morty_app/features/character_detail/domain/bloc/character_bloc.dart';
 import 'package:rick_and_morty_app/features/characters/domain/models/character.dart';
+import 'package:rick_and_morty_app/features/favourites/presentation/widgets/favourite_icon_button.dart';
 
 class CharacterDetailPage extends StatelessWidget {
   CharacterDetailPage({Key key}) : super(key: key);
@@ -41,7 +42,12 @@ class CharacterDetailPage extends StatelessWidget {
                     const SizedBox(
                       height: 12,
                     ),
-                    Text(_character.name.toUpperCase()),
+                    Row(
+                      children: [
+                        Text(_character.name.toUpperCase()),
+                        FavouriteIconButton(id: _character.id),
+                      ],
+                    ),
                     const SizedBox(
                       height: 12,
                     ),
