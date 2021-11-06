@@ -17,6 +17,14 @@ class CharactersPage extends StatelessWidget {
       appBar: AppBar(
         key: Key('charactersPageAppBar'),
         title: Text('Characters'),
+        actions: [
+          IconButton(
+              icon: Icon(
+                Icons.favorite_outline_sharp,
+                color: Colors.white,
+              ),
+              onPressed: null)
+        ],
       ),
       body: CharactersList(
         key: Key('charactersPageBody'),
