@@ -18,7 +18,9 @@ class CharactersList extends StatelessWidget {
       cubit: charactersBloc,
       builder: (context, state) {
         if (state is CharactersLoaded) {
-          final List<Character> _results = state.characters;
+          final List<Character> _results = state.showFavourites
+              ? state.filteredCharacters
+              : state.characters;
           return ListView.builder(
             padding: const EdgeInsets.all(8),
             itemCount: _results.length,
@@ -40,12 +42,14 @@ class CharactersList extends StatelessWidget {
         if (state is CharactersError) {
           return Center(
             key: Key('errorMessage'),
-            child: Text('Se ha producido un error...', key: Key('initialErrorText')),
+            child: Text('Se ha producido un error...',
+                key: Key('initialErrorText')),
           );
         }
         return Center(
           key: Key('initialMessage'),
-          child: Text('Pulse para cargar personajes.', key: Key('initialMessageText')),
+          child: Text('Pulse para cargar personajes.',
+              key: Key('initialMessageText')),
         );
       },
     );
