@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:rick_and_morty_app/features/characters/domain/bloc/characters_bloc.dart';
 import 'package:rick_and_morty_app/features/favourites/domain/bloc/favourites_bloc.dart';
 
 class FavouriteIconButton extends StatefulWidget {
@@ -47,6 +48,7 @@ class _FavouriteIconButtonState extends State<FavouriteIconButton> {
             Get.find<FavouritesBloc>().add(
               FavouritesToggle(id: widget.id),
             );
+            Get.find<CharactersBloc>().add(CharactersFetch());
             setState(() {});
           },
         );
