@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:rick_and_morty_app/features/character_detail/infraestructure/dto/character_detail.dart';
-import 'package:rick_and_morty_app/features/character_detail/infraestructure/dto/episode.dart';
+import 'package:rick_and_morty_app/features/character_detail/infrastructure/dto/character_detail.dart';
+import 'package:rick_and_morty_app/features/character_detail/infrastructure/dto/episode.dart';
 import 'package:rick_and_morty_app/features/characters/domain/models/character.dart';
 
 class CharacterDetailViewModel {
@@ -52,22 +52,27 @@ class CharacterDetailViewModel {
 
     return CharacterDetailViewModel(
       character: Character.fromMap(map['character']),
-      episodes: List<Episode>.from(map['episodes']?.map((x) => Episode.fromMap(x))),
+      episodes:
+          List<Episode>.from(map['episodes']?.map((x) => Episode.fromMap(x))),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory CharacterDetailViewModel.fromJson(String source) => CharacterDetailViewModel.fromMap(json.decode(source));
+  factory CharacterDetailViewModel.fromJson(String source) =>
+      CharacterDetailViewModel.fromMap(json.decode(source));
 
   @override
-  String toString() => 'CharacterDetailViewModel(character: $character, episodes: $episodes)';
+  String toString() =>
+      'CharacterDetailViewModel(character: $character, episodes: $episodes)';
 
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
-    return o is CharacterDetailViewModel && o.character == character && listEquals(o.episodes, episodes);
+    return o is CharacterDetailViewModel &&
+        o.character == character &&
+        listEquals(o.episodes, episodes);
   }
 
   @override

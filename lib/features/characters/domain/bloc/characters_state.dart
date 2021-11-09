@@ -25,9 +25,19 @@ class CharactersError extends CharactersState {
 
 class CharactersLoaded extends CharactersState {
   final List<Character> characters;
+  final List<Character> filteredCharacters;
+  final bool showFavourites;
 
-  CharactersLoaded({this.characters});
+  CharactersLoaded({
+    this.characters,
+    this.filteredCharacters,
+    this.showFavourites = false,
+  });
 
   @override
-  List<Object> get props => [characters];
+  List<Object> get props => [
+        characters,
+        filteredCharacters,
+        showFavourites,
+      ];
 }

@@ -4,13 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:lumberdash/lumberdash.dart';
 import 'package:rick_and_morty_app/debug/my_bloc_observer.dart';
-import 'package:rick_and_morty_app/di/inyector.dart';
+import 'package:rick_and_morty_app/di/injector.dart';
 import 'package:rick_and_morty_app/features/characters/presentation/pages/characters_page.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();
   putLumberdashToWork(withClients: [ColorizeLumberdash()]);
-  configureInyector();
+  configureInjector();
   runApp(MyApp());
 }
 
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Rick & Morty App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.teal,
         visualDensity: VisualDensity.adaptivePlatformDensity,

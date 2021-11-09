@@ -1,6 +1,9 @@
 import 'dart:convert';
 
-class Character {
+import 'package:flutter/foundation.dart';
+import 'package:rick_and_morty_app/features/character_detail/infrastructure/dto/episode.dart';
+
+class CharacterDetail {
   final String id;
   final String name;
   final String status;
@@ -8,8 +11,8 @@ class Character {
   final String type;
   final String gender;
   final String image;
-  final bool isFavourite;
-  Character({
+  final List<Episode> episodes;
+  CharacterDetail({
     this.id,
     this.name,
     this.status,
@@ -17,10 +20,10 @@ class Character {
     this.type,
     this.gender,
     this.image,
-    this.isFavourite,
+    this.episodes,
   });
 
-  Character copyWith({
+  CharacterDetail copyWith({
     String id,
     String name,
     String status,
@@ -28,9 +31,9 @@ class Character {
     String type,
     String gender,
     String image,
-    bool isFavourite,
+    List<Episode> episodes,
   }) {
-    return Character(
+    return CharacterDetail(
       id: id ?? this.id,
       name: name ?? this.name,
       status: status ?? this.status,
@@ -38,7 +41,7 @@ class Character {
       type: type ?? this.type,
       gender: gender ?? this.gender,
       image: image ?? this.image,
-      isFavourite: isFavourite ?? this.isFavourite,
+      episodes: episodes ?? this.episodes,
     );
   }
 
@@ -51,14 +54,14 @@ class Character {
       'type': type,
       'gender': gender,
       'image': image,
-      'isFavourite': isFavourite,
+      'episode': episodes?.map((x) => x?.toMap())?.toList(),
     };
   }
 
-  factory Character.fromMap(Map<String, dynamic> map) {
+  factory CharacterDetail.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
-    return Character(
+    return CharacterDetail(
       id: map['id'],
       name: map['name'],
       status: map['status'],
@@ -66,25 +69,28 @@ class Character {
       type: map['type'],
       gender: map['gender'],
       image: map['image'],
-      isFavourite: map['isFavourite'],
+      episodes: (map['episode'] as List)
+          ?.map((x) =>
+              x == null ? null : Episode.fromMap(x as Map<String, dynamic>))
+          ?.toList(),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Character.fromJson(String source) =>
-      Character.fromMap(json.decode(source));
+  factory CharacterDetail.fromJson(String source) =>
+      CharacterDetail.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'Result(id: $id, name: $name, status: $status, species: $species, type: $type, gender: $gender, image: $image, isFavourite: $isFavourite)';
+    return 'CharacterDetail(id: $id, name: $name, status: $status, species: $species, type: $type, gender: $gender, image: $image, episode: $episodes)';
   }
 
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
-    return o is Character &&
+    return o is CharacterDetail &&
         o.id == id &&
         o.name == name &&
         o.status == status &&
@@ -92,7 +98,7 @@ class Character {
         o.type == type &&
         o.gender == gender &&
         o.image == image &&
-        o.isFavourite == isFavourite;
+        listEquals(o.episodes, episodes);
   }
 
   @override
@@ -104,6 +110,6 @@ class Character {
         type.hashCode ^
         gender.hashCode ^
         image.hashCode ^
-        isFavourite.hashCode;
+        episodes.hashCode;
   }
 }

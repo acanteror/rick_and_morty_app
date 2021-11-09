@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rick_and_morty_app/features/character_detail/domain/bloc/character_bloc.dart';
 import 'package:rick_and_morty_app/features/character_detail/presentation/pages/character_detail_page.dart';
 import 'package:rick_and_morty_app/features/characters/domain/models/character.dart';
+import 'package:rick_and_morty_app/features/favourites/presentation/widgets/favourite_icon_button.dart';
 
 class CharacterListItem extends StatelessWidget {
   const CharacterListItem({
@@ -25,9 +26,12 @@ class CharacterListItem extends StatelessWidget {
           leading: Image.network(_character.image),
           title: Text(_character.name.toUpperCase()),
           subtitle: Text('Status: ${_character.status}'),
-          trailing: Icon(Icons.arrow_forward_ios),
+          trailing: FavouriteIconButton(
+            id: _character.id,
+          ),
           onTap: () async {
-            await Get.find<CharacterBloc>().add(CharacterFetch(id: _character.id));
+            await Get.find<CharacterBloc>()
+                .add(CharacterFetch(id: _character.id));
             Get.to(CharacterDetailPage());
           },
         ),
