@@ -27,35 +27,39 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
     CharactersEvent event,
   ) async* {
     if (event is CharactersFetch) {
-      yield CharactersLoading();
+      if(state is! CharactersLoaded) {yield CharactersLoading();}
       try {
         final Data _response = await _charactersRepository.fetchCharacters();
         final List<Character> _characters = _response.results;
-        yield CharactersLoaded(characters: _characters);
+        final List<String> _favourites =
+            _favouritesRepository.fetchFavourites();
+        yield CharactersLoaded(
+          characters: _characters,
+          filteredCharacters: _characters
+              .where(
+                (element) => _favourites.contains(element.id),
+              )
+              .toList(),
+        );
       } catch (e) {
         yield CharactersError();
       }
     }
 
     if (event is CharactersFilter) {
-      yield CharactersLoading();
       try {
         final Data _response = await _charactersRepository.fetchCharacters();
         final List<Character> _characters = _response.results;
-
         final List<String> _favourites =
             _favouritesRepository.fetchFavourites();
-
         yield CharactersLoaded(
-          characters: _characters
+          characters: _characters,
+          filteredCharacters: _characters
               .where(
                 (element) => _favourites.contains(element.id),
               )
-              .map(
-                (e) => e.copyWith(
-                  isFavourite: true,
-                ),
-              ),
+              .toList(),
+          showFavourites: !(state as CharactersLoaded).showFavourites,
         );
       } catch (e) {
         yield CharactersError();
